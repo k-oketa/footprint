@@ -1,0 +1,65 @@
+
+data UnvalidatedSurvey =
+    UnvalidatedSurveyName
+    AND UnvalidatedSurveyTerm
+    AND list of UnvalidatedQuestion
+
+    data UnvalidatedSurveyName = String
+
+    data UnvalidatedSurveyTerm =
+        From
+        AND To
+
+        data From = LocalDate
+        data To = LocalDate
+
+    data UnvalidatedQuestion =
+        UnvalidatedQuestionType
+        AND UnvalidatedQuestionSentence
+        AND list of UnvalidatedOption
+
+        data UnvalidatedQuestionType =
+            SingleChoiceQuestion
+            OR MultipleChoiceQuestion
+            OR DescriptionQuestion
+
+    data UnvalidatedQuestionSentence = String
+    data UnvalidatedOption = String
+
+data Survey =
+    SurveyName
+    AND SurveyTerm
+    AND list of Question
+
+    data SurveyName = String
+
+    data SurveyTerm =
+        From
+        AND To
+
+        data From = LocalDate
+        data To = LocalDate
+
+    data Question =
+        SingleChoiceQuestion
+        OR MultipleChoiceQuestion
+        OR DescriptionQuestion
+
+    data SingleChoiceQuestion =
+        QuestionSentence
+        AND list of Option
+
+    data MultipleChoiceQuestion =
+        QuestionSentence
+        AND list of Option
+
+    data DescriptionQuestion =
+        QuestionSentence
+
+    data QuestionSentence = String
+    data Option = String
+
+workflow ValidateSurvey =
+    input: UnvalidatedSurvey
+    output(on success): Survey
+    output(on error):  InvalidSurvey
