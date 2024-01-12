@@ -48,9 +48,9 @@ public class ValidateSurvey implements Function<UnvalidatedSurvey, Either<String
                 questionSentence -> validateOptions(unvalidatedQuestion).flatMap(
                         options -> Either.right(
                                 switch (unvalidatedQuestion.questionType()) {
-                                    case SingleChoice -> new SingleChoiceQuestion(questionSentence, options);
-                                    case MultipleChoice -> new MultipleChoiceQuestion(questionSentence, options);
-                                    case Description -> new DescriptionQuestion(questionSentence);
+                                    case singleChoice -> new SingleChoiceQuestion(questionSentence, options);
+                                    case multipleChoice -> new MultipleChoiceQuestion(questionSentence, options);
+                                    case description -> new DescriptionQuestion(questionSentence);
                                 }
                         )
                 )
