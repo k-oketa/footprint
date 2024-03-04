@@ -3,6 +3,7 @@ import {HEROES} from "../mock-heroes";
 import {NgFor, NgIf, UpperCasePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Hero} from "../hero";
+import {AppModule} from "../app.module";
 
 @Component({
   selector: 'app-heroes',
@@ -13,7 +14,8 @@ import {Hero} from "../hero";
     FormsModule,
     NgIf,
     NgFor,
-    UpperCasePipe
+    UpperCasePipe,
+    AppModule
   ]
 })
 export class HeroesComponent {
